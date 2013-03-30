@@ -3,52 +3,59 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 <h2>Tweets from Angular and Rails</h2>
+    <!-- Based on 
+      http://stackoverflow.com/questions/14692640/angularjs-directive-to-replace-text and
+      http://jsfiddle.net/bmleite/FyGen/
+    -->
 <%= javascript_tag do %>
   function TweetsCtrl($scope) {
     $scope.tweets = <%= @tweets %>
-  }
+
+    $scope.props = {
+        target: '_blank',
+        otherProp: 'otherProperty'
+    };
+
+    $scope.formatText = function(text) {
+      return twttr.txt.autoLink(text);
+    }
+  };
 <% end %>
 <div ng-controller="TweetsCtrl">
-  <ul>
-    <li ng-repeat="tweet in tweets">{{tweet.text}}</li>
+  <ul class="media-list">
+    <li class="media">
+      <div class="pull-left">100</div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <a href="http://www.rubylang.org">The Ruby Programming Language</a>
+        </h4>
+        <!-- For each mention, show the tweet -->
+        <div class="media" ng-repeat="tweet in tweets">
+          <div class="pull-left">
+            <img class="avatar size32" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.name}}"> 
+          </div>
+          <div class="media-body">
+            <p ng-bind-html-unsafe="formatText(tweet.text)"></p>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="media">
+      <div class="pull-left">13</div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <a href="http://www.rubyonrails.org">Ruby On Rails</a>
+        </h4>
+        <!-- For each mention, show the tweet -->
+        <div class="media" ng-repeat="tweet in tweets">
+          <div class="pull-left">
+            <img class="avatar size32" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.name}}"> 
+          </div>
+          <div class="media-body">{{tweet.text}}</div>
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
-
-<h3>Other stuff</h3>
-<ul class="media-list">
-  <li class="media">
-    <div class="pull-left">100</div>
-    <div class="media-body">
-      <h4 class="media-heading">
-        <a href="http://www.rubylang.org">The Ruby Programming Language</a>
-      </h4>
-      <!-- For each mention, show the tweet -->
-      <div class="media">
-        <div class="pull-left">
-          <img class="avatar size32" src="https://si0.twimg.com/profile_images/3382317995/a586c47639398502ae3cfb7291589c09_normal.png" alt="Einar Jónsson" data-user-id="20422920"> 
-        </div>
-        <div class="media-body">
-          Ruby is so fun to work with.
-        </div>
-      </div>
-      <div class="media">
-        <div class="pull-left">
-          <img class="avatar js-action-profile-avatar" src="https://si0.twimg.com/profile_images/3035009585/93fdaf003d2b213dd6c4d6cae860e76e_normal.jpeg" alt="Ricky Gervais">
-        </div>
-        <div class="media-body">
-          Ruby Lolz
-        </div>
-      </div>
-
-    </div>
-  </li>
-  <li class="media">
-    <div class="pull-left">73</div>
-    <div class="media-body">
-      <h4 class="media-heading">
-        <a href="http://www.rubyonrails.org">Ruby On Rails</a>
-      </h4>
-    </div>
-  </li>
-</ul>
 
