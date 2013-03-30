@@ -3,10 +3,12 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
+    @tweets = Tweets.new.to_json.html_safe
+
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @feeds }
+      format.json { render json: @tweets }
     end
   end
 

@@ -2,7 +2,19 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
+<h2>Tweets from Angular and Rails</h2>
+<%= javascript_tag do %>
+  function TweetsCtrl($scope) {
+    $scope.tweets = <%= @tweets %>
+  }
+<% end %>
+<div ng-controller="TweetsCtrl">
+  <ul>
+    <li ng-repeat="tweet in tweets">{{tweet.text}}</li>
+  </ul>
+</div>
 
+<h3>Other stuff</h3>
 <ul class="media-list">
   <li class="media">
     <div class="pull-left">100</div>
