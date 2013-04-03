@@ -25,6 +25,15 @@ group :assets do
 
 end
 
+group :development, :test do
+  gem 'debugger'
+end
+
 gem 'jquery-rails'
 
+gem "mongoid", "~> 3.1.0"
+gem 'bson_ext'
 
+
+gem 'omniauth'
+gem 'omniauth-twitter'
