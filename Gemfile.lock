@@ -16,6 +16,12 @@ GIT
       omniauth-oauth (~> 1.0)
 
 GIT
+  remote: https://github.com/hiravgandhi/angularjs-rails.git
+  revision: 805e8f2df860a76c0dc289b90615a8bcb34f20e7
+  specs:
+    angularjs-rails (1.0.5)
+
+GIT
   remote: https://github.com/intridea/omniauth.git
   revision: fe14887737882825dae7011ad76f5e0b8410d5c6
   specs:
@@ -138,8 +144,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     simple_oauth (0.2.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -168,6 +172,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails!
   bson_ext
   coffee-rails (~> 3.2.1)
   crack
@@ -179,7 +184,6 @@ DEPENDENCIES
   omniauth-oauth
   omniauth-twitter!
   rails (= 3.2.13)
-  rest-client
   sqlite3
   therubyracer
   twitter

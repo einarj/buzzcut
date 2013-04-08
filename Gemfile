@@ -23,11 +23,14 @@ group :assets do
   gem 'less-rails'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
+  gem 'angularjs-rails', :git => 'https://github.com/hiravgandhi/angularjs-rails.git'
+
 end
 
 group :development, :test do
   gem 'debugger'
 end
+
 
 gem 'jquery-rails'
 
