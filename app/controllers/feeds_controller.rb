@@ -5,8 +5,6 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
     @tweets = Link.first.tweets.map{|t| t.content}
 
-    logger.debug "CURRENT_USER token: #{oauth_token}"
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }
@@ -71,6 +69,7 @@ class FeedsController < ApplicationController
       end
     end
   end
+
 
   # DELETE /feeds/1
   # DELETE /feeds/1.json

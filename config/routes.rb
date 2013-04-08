@@ -1,7 +1,14 @@
 Buzzcut::Application.routes.draw do
   resources :feeds
 
-  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/twitter/callback', to: 'sessions#create'
+  match '/auth/failure', to: 'sessions#failure'
+
+  resources :tweets do
+    collection do
+      put 'update_all'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

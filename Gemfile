@@ -35,8 +35,10 @@ gem "mongoid", "~> 3.1.0"
 gem 'bson_ext'
 
 
-gem 'omniauth'
-gem 'omniauth-twitter'
+gem 'omniauth', :git => 'https://github.com/intridea/omniauth.git'
+gem 'omniauth-oauth'
+gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter.git'
 
 
 gem 'crack'
+gem 'twitter'

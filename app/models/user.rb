@@ -3,7 +3,7 @@ class User
   field :name, type: String
 
   attr_accessible :name
-  attr_accessor :oauth_token, :oauth_token_secret, :oauth_verifier
+  attr_accessor :oauth_token, :oauth_token_secret
 
   def self.find_or_create_from_auth_hash(auth_hash)
     info = auth_hash['info']

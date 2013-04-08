@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
+
+<h1>Twitter auth:</h1>
+<a href="/auth/twitter/?use_authorize=true">LOGIN</a>
+
+<%= link_to 'Update tweets', update_all_tweets_path, :method => :put, :remote => true %>
+
 <h2>Tweets from Angular and Rails</h2>
     <!-- Based on 
       http://stackoverflow.com/questions/14692640/angularjs-directive-to-replace-text and
