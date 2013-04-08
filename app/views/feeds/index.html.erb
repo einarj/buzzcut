@@ -9,7 +9,7 @@
     -->
 <%= javascript_tag do %>
   function TweetsCtrl($scope) {
-    $scope.tweets = <%= @tweets %>
+    $scope.tweets = <%= raw @tweets.to_json %>
 
     $scope.props = {
         target: '_blank',
@@ -40,14 +40,16 @@
         </div>
       </div>
     </li>
-
+<!--
     <li class="media">
       <div class="pull-left">13</div>
       <div class="media-body">
         <h4 class="media-heading">
           <a href="http://www.rubyonrails.org">Ruby On Rails</a>
         </h4>
-        <!-- For each mention, show the tweet -->
+-->
+<!-- For each mention, show the tweet -->
+<!--
         <div class="media" ng-repeat="tweet in tweets">
           <div class="pull-left">
             <img class="avatar size32" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.name}}"> 
@@ -55,7 +57,8 @@
           <div class="media-body">{{tweet.text}}</div>
         </div>
       </div>
-    </li>
+      </li>
+      -->
   </ul>
 </div>
 

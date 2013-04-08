@@ -3,8 +3,7 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
-    #@tweets = Tweets.new.to_json.html_safe
-    @tweets = Link.first.tweets.map{|t| t.content}.to_json.html_safe
+    @tweets = Link.first.tweets.map{|t| t.content}
 
     logger.debug "CURRENT_USER token: #{oauth_token}"
 

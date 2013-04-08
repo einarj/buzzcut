@@ -37,3 +37,6 @@ gem 'bson_ext'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+
+gem 'crack'

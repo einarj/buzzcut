@@ -6,8 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-l = Link.create(url: "http://www.rubylang.org")
-t1 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: '''
+json1 = Crack::JSON.parse('''
   {
     "coordinates": null,
     "truncated": false,
@@ -96,7 +95,7 @@ t1 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: '''
     "in_reply_to_status_id": null
   }''')
 
-t2 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: '''
+json2 = Crack::JSON.parse('''
   {
     "coordinates": {
       "coordinates": [
@@ -263,11 +262,9 @@ t2 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: '''
   }
   ''')
 
-#t1.links << l
-#t1.save
-
-#t2.links << l
-#t2.save
-
+t1 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json1)
+t2 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json2)
+l = Link.create(url: "http://www.rubylang.org")
 l.tweets << [t1, t2]
-l.save
+#l.tweets << t1
+l.save!
