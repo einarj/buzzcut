@@ -3,7 +3,9 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
-    @tweets = Link.first.tweets.map{|t| t.content}
+    #@tweets = Link.first.tweets.map{|t| t.content}
+    @tweets = Link.first.tweets
+    @links = Link.all
 
     respond_to do |format|
       format.html # index.html.erb

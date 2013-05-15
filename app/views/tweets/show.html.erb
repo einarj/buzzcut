@@ -1,0 +1,29 @@
+<%= javascript_tag do %>
+  function TweetCtrl($scope) {
+    $scope.tweet = <%= raw @tweet.to_json %>
+
+    $scope.props = {
+        target: '_blank',
+        otherProp: 'otherProperty'
+    };
+
+    $scope.formatText = function(text) {
+      return twttr.txt.autoLink(text);
+    }
+  };
+<% end %>
+
+<div ng-controller="TweetCtrl">
+  <div class="media">
+    <div class="pull-left">
+      <img class="avatar size32" ng-src="{{tweet.content.user.profile_image_url}}" alt="{{tweet.content.user.name}}"> 
+    </div>
+    <div class="media-body">
+      <p ng-bind-html-unsafe="formatText(tweet.content.text)"></p>
+      <h3>Resolved links</h3>
+      <ul>
+        <li ng-repeat="url in tweet.content.entities.urls">{{url.expanded_url}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

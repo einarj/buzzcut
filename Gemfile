@@ -24,6 +24,8 @@ group :assets do
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
   gem 'angularjs-rails', :git => 'https://github.com/hiravgandhi/angularjs-rails.git'
+  #gem 'twitter-text-js-rails', :git => 'https://github.com/einarj/twitter-text-js-rails.git'
+  gem 'twitter-text-js-rails'
 
 end
 
