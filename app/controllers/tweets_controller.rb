@@ -8,22 +8,14 @@ class TweetsController < ApplicationController
     home_timeline.each do |t|
       begin
         #tweet = Tweet.create!(:published_on => t.created_at, :content => Crack::JSON.parse(t.to_json))
-        tweet = Tweet.create!(:published_on => t.created_at, :user => t.user, :full_text => t.full_text, :urls => t.urls)
+        #tweet = Tweet.create!(:published_on => t.created_at, :user => t.user.to_hash, :full_text => t.full_text, :urls => t.urls)
+        tweet = Tweet.create!(:published_on => t.created_at, :user => t.user.to_hash, :full_text => t.full_text)
         link.tweets << tweet
       rescue Exception => e
         debugger
         p e
       end
     end
-
-
-    #home_timeline.each do |t|
-      #t.urls.each do |url|
-        #link = Link.create!(:url => url)
-        #tweet = Tweet.create!(:published_on => t.created_at, :content => Crack::JSON.parse(t.to_json))
-        #link.tweets << tweet
-      #end
-    #end
 
     respond_to do |format|
       format.js

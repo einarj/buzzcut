@@ -9,17 +9,7 @@
 <%= link_to 'Update tweets', update_all_tweets_path, :method => :put, :remote => true %>
 
 <h2>Tweets from Angular and Rails</h2>
-    <!-- Based on 
-      http://stackoverflow.com/questions/14692640/angularjs-directive-to-replace-text and
-      http://jsfiddle.net/bmleite/FyGen/
-    -->
 <%= javascript_tag do %>
-
-  <%#$rootScope.filter('autolinkTweet', function() {%>
-    <%#return function(text) {%>
-      <%#return twttr.txt.autoLink(text);%>
-    <%#}%>
-  <%#}%>
 
   function TweetsCtrl($scope) {
     $scope.tweets = <%= raw @tweets.to_json %>
@@ -30,7 +20,7 @@
     }
   };
 <% end %>
-<div ng-controller="TweetsCtrl">
+<div>
   <ul class="media-list">
     <li class="media">
       <div class="pull-left">100</div>
@@ -39,16 +29,19 @@
           <a href="http://www.rubylang.org">The Ruby Programming Language</a>
         </h4>
         <!-- For each mention, show the tweet -->
-        <div class="media" ng-repeat="tweet in tweets">
+        <!-- TODO: Extract to partial -->
+        <% @tweets.each do |tweet| %>
+        <div class="media">
           <div class="pull-left">
-            <img class="avatar size32" ng-src="{{tweet.content.user.profile_image_url}}" alt="{{tweet.user.name}}"> 
+            <img class="avatar size32" src="<%= tweet.profile_image_url %>" alt="{{tweet.user.name}}"> 
           </div>
           <div class="media-body">
-            <a href="/tweets/{{tweet._id}}">
-              <p ng-bind-html-unsafe="formatText(tweet.content.text)"></p>
-            </a>
+            <!-- <a href="/tweets/<%= tweet._id %>"> -->
+              <%= auto_link(tweet.text).html_safe %>
+              <!-- </a> -->
           </div>
         </div>
+      <% end %>
       </div>
     </li>
   </ul>
