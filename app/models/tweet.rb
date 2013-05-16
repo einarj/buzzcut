@@ -6,6 +6,10 @@ class Tweet
   field :urls, :type => Array
   field :content, :type => Hash
 
+  field :tweet_id, :type => Integer
+
+  index({ tweet_id: 1 }, { unique: true, name: "tweet_id_index" })
+
   has_and_belongs_to_many :links
 
 

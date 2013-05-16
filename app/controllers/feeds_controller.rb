@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
     #@tweets = Link.first.tweets
-    @links = Link.all
+    @links = Link.desc(:tweet_count)
 
     respond_to do |format|
       format.html # index.html.erb

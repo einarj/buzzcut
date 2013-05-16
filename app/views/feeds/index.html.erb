@@ -9,31 +9,9 @@
 <%= link_to 'Update tweets', update_all_tweets_path, :method => :put, :remote => true %>
 
 <h2>Tweets from Angular and Rails</h2>
-<%= javascript_tag do %>
-
-  function TweetsCtrl($scope) {
-    $scope.tweets = <%= raw @tweets.to_json %>
-
-    $scope.formatText = function(text) {
-      //return twttr.txt.autoLinkUrlsCustom(text);
-      return twttr.txt.autoLink(text);
-    }
-  };
-<% end %>
 <div>
   <ul class="media-list">
     <%= render :partial => 'link', :collection => @links %>
-    <!--
-    <li class="media">
-      <div class="pull-left">100</div>
-      <div class="media-body">
-        <h4 class="media-heading">
-          <a href="http://www.rubylang.org">The Ruby Programming Language</a>
-        </h4>
-        <%= render :partial => "tweets/show", :collection => @tweets, :as => "tweet" %>
-      </div>
-    </li>
--->
   </ul>
 </div>
 
