@@ -262,9 +262,8 @@ json2 = Crack::JSON.parse('''
   }
   ''')
 
-t1 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json1)
-t2 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json2)
-l = Link.create(url: "http://www.rubylang.org")
-l.tweets << [t1, t2]
-#l.tweets << t1
-l.save!
+#t1 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json1)
+#t2 = Tweet.create(published_on: "Wed Mar 03 19:37:35 +0000 2010", content: json2)
+#l = Link.create(url: "http://www.rubylang.org")
+#l.tweets << [t1, t2]
+#l.save!

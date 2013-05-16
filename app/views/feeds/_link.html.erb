@@ -1,0 +1,9 @@
+<li class="media">
+  <div class="pull-left">100</div>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <a href="http://www.rubylang.org"><%= link.url %></a>
+    </h4>
+    <%= render :partial => "tweets/show", :collection => link.tweets, :as => "tweet" %>
+  </div>
+</li>
