@@ -1,0 +1,10 @@
+<div class="media">
+  <div class="pull-left">
+    <img class="avatar size32" src="<%= tweet.profile_image_url %>" alt="{{tweet.user.name}}"> 
+  </div>
+  <div class="media-body">
+    <!-- <a href="/tweets/<%= tweet._id %>"> -->
+      <%= auto_link(tweet.text).html_safe %>
+      <!-- </a> -->
+  </div>
+</div>
