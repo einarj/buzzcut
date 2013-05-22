@@ -3,7 +3,6 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all
-    #@tweets = Link.first.tweets
     @links = Link.desc(:tweet_count)
 
     respond_to do |format|
