@@ -33,6 +33,7 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails', '~> 2.0'
+  gem 'mongoid-rspec', :github => 'evansagge/mongoid-rspec'
 end
 
 gem 'jquery-rails'

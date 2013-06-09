@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/evansagge/mongoid-rspec.git
+  revision: dc69ad7f44e0f33ebc79e5063b5730310b742138
+  specs:
+    mongoid-rspec (1.8.2)
+      mongoid (>= 3.0.1)
+      rake
+      rspec (>= 2.9)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 679fc6ee91b8e77e4f30625ca574c142ac3d5782
   specs:
@@ -145,6 +154,10 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -197,6 +210,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mongoid (~> 3.1.0)
+  mongoid-rspec!
   omniauth!
   omniauth-oauth
   omniauth-twitter!
