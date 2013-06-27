@@ -18,16 +18,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
-  gem 'angularjs-rails', :git => 'https://github.com/hiravgandhi/angularjs-rails.git'
-  #gem 'twitter-text-js-rails', :git => 'https://github.com/einarj/twitter-text-js-rails.git'
-  #gem 'twitter-text-js-rails'
   gem 'twitter-text'
-
 end
 
 group :development, :test do
@@ -36,16 +30,19 @@ group :development, :test do
   gem 'mongoid-rspec', :github => 'evansagge/mongoid-rspec'
 end
 
+group :test do
+  gem 'simplecov', :require => false, :github => 'colszowka/simplecov'
+  gem 'factory_girl_rails', :github => 'thoughtbot/factory_girl_rails'
+end
+
 gem 'jquery-rails'
 
 gem "mongoid", "~> 3.1.0"
 gem 'bson_ext'
 
-
 gem 'omniauth', :git => 'https://github.com/intridea/omniauth.git'
 gem 'omniauth-oauth'
 gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter.git'
-
 
 gem 'crack'
 gem 'twitter'
