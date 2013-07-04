@@ -26,7 +26,8 @@ end
 
 group :development, :test do
   gem 'debugger'
-  gem 'rspec-rails', '~> 2.0'
+  #gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails', '>= 2.14.0.rc1'
   gem 'mongoid-rspec', :github => 'evansagge/mongoid-rspec'
 end
 
