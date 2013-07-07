@@ -5,6 +5,8 @@ class User
   attr_accessible :name
   attr_accessor :oauth_token, :oauth_token_secret
 
+  validates_presence_of :name
+
   def self.find_or_create_from_auth_hash(auth_hash)
     info = auth_hash['info']
     name = info['name'] || info['email']

@@ -34,6 +34,8 @@ end
 group :test do
   gem 'simplecov', :require => false, :github => 'colszowka/simplecov'
   gem 'factory_girl_rails', :github => 'thoughtbot/factory_girl_rails'
+
+  gem 'database_cleaner', :github => 'bmabey/database_cleaner'
 end
 
 gem 'jquery-rails'

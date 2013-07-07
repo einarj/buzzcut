@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/bmabey/database_cleaner.git
+  revision: 5dc784af6661fd9067953458fbac1b2e0334f0db
+  specs:
+    database_cleaner (1.0.1)
+
+GIT
   remote: git://github.com/colszowka/simplecov.git
   revision: a3387f7b25100939df6a5af339580cbe3055cdc6
   specs:
@@ -218,6 +224,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   crack
+  database_cleaner!
   debugger
   factory_girl_rails!
   jquery-rails
