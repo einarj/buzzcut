@@ -1,4 +1,9 @@
-class TwitterGatewayService
+class TwitterGateway
+
+  def initialize(oauth_token, oauth_token_secret)
+    @oauth_token = oauth_token
+    @oauth_token_secret = oauth_token_secret
+  end
 
   def home_timeline
     oldest = Tweet.asc(:published_on).first
@@ -17,7 +22,11 @@ class TwitterGatewayService
   end
 
   def client
-    Twitter::Client.new(:oauth_token => session[:oauth_token], :oauth_token_secret => session[:oauth_token_secret])
+    Twitter::Client.new(oauth_hash)
+  end
+
+  def oauth_hash
+    {oauth_token: @oauth_token, oauth_token_secret: @oauth_token_secret}
   end
 
   def report_rate_limit

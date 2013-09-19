@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe TwitterGatewayService do
-   let (:gateway) { TwitterGatewayService.new }
+describe TwitterGateway do
+   let (:gateway) { TwitterGateway.new(nil, nil) }
 
   describe '#home_timeline' do
     context 'oldest tweet is less than 30 days old' do
