@@ -28,13 +28,23 @@ describe FeedUpdater do
       expect { @feed_updater.update_all }.to change{Link.count}.by(2)
     end
 
-    it 'should assign the tweet to the link' do
+    it 'should assign the link to the tweet' do
       @feed_updater.update_all
       tweets = Tweet.all
 
       Link.all.each { |link|
         expect(tweets[0].links).to include(link)
         expect(tweets[1].links).to include(link)
+      }
+    end
+
+    it 'should assign the tweet to the link' do
+      @feed_updater.update_all
+      links = Link.all
+
+      Tweet.all.each { |tweet|
+        expect(links[0].tweets).to include(tweet)
+        expect(links[1].tweets).to include(tweet)
       }
     end
 

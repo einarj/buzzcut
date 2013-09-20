@@ -19,7 +19,6 @@ class FeedUpdater
 
             link = Link.find_or_create_by(url: tweet_url.expanded_url)
             link.tweets << tweet
-            link.save
 
             tweet_url.link = link
             tweet_url.tweet = tweet
