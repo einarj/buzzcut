@@ -31,4 +31,12 @@ class Tweet
   def text
     self.full_text || self.content['full_text'] || self.content["text"]
   end
+
+  def self.exists?(tweet_id)
+    Tweet.where(:tweet_id => tweet_id).count != 0
+  end
+
+  def self.create_from_twitter_tweet!(t)
+    Tweet.create!(:tweet_id => t.id, :published_on => t.created_at, :user => t.user.to_hash, :full_text => t.full_text)
+  end
 end

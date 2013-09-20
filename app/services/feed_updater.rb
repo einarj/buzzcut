@@ -12,8 +12,8 @@ class FeedUpdater
     num_attempts = 0
     @gateway.home_timeline.each do |t|
       begin
-        if Tweet.where(:tweet_id => t.id).count == 0
-          tweet = Tweet.create!(:tweet_id => t.id, :published_on => t.created_at, :user => t.user.to_hash, :full_text => t.full_text)
+        unless  Tweet.exists?(t.id)
+          tweet = Tweet.create_from_twitter_tweet!(t)
           t.urls.each do |u|
             tweet_url = TweetUrl.create!(u.attrs)
 
