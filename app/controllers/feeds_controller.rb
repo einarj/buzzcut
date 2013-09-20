@@ -4,33 +4,18 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
     @links = Link.desc(:tweet_count)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tweets }
-    end
   end
 
   # GET /feeds/1
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @feed }
-    end
   end
 
   # GET /feeds/new
   # GET /feeds/new.json
   def new
     @feed = Feed.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @feed }
-    end
   end
 
   # GET /feeds/1/edit
@@ -43,14 +28,10 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(params[:feed])
 
-    respond_to do |format|
-      if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render json: @feed, status: :created, location: @feed }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
+    if @feed.save
+      redirect_to @feed, notice: 'Feed was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -59,14 +40,10 @@ class FeedsController < ApplicationController
   def update
     @feed = Feed.find(params[:id])
 
-    respond_to do |format|
-      if @feed.update_attributes(params[:feed])
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
+    if @feed.update_attributes(params[:feed])
+      redirect_to @feed, notice: 'Feed was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -76,10 +53,6 @@ class FeedsController < ApplicationController
   def destroy
     @feed = Feed.find(params[:id])
     @feed.destroy
-
-    respond_to do |format|
-      format.html { redirect_to feeds_url }
-      format.json { head :no_content }
-    end
+    redirect_to feeds_url
   end
 end
