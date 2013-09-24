@@ -10,8 +10,21 @@ class Tweet
 
   index({ tweet_id: 1 }, { unique: true, name: "tweet_id_index" })
 
-  has_and_belongs_to_many :links
+  has_and_belongs_to_many :links, dependent: :delete
 
+  around_destroy :decrement_link_counters
+
+
+  def decrement_link_counters
+    link_ids = links.map(&:_id)
+    yield
+    link_ids.each { |link_id|
+      link = Link.find(link_id)
+      link.update_tweet_count
+      # Creates a new record since the clone is a new unsaved object!
+      link.save!
+    }
+  end
 
   def profile_image_url
     begin
@@ -26,6 +39,10 @@ class Tweet
       debugger
       p e
     end
+  end
+
+  def expired?
+    self.published_on < 30.days.ago.to_date
   end
 
   def text

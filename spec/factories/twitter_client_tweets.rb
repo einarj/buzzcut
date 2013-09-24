@@ -44,6 +44,19 @@ FactoryGirl.define do
     end
   end
 
+  factory :twitter_client_expired_tweet, class: Twitter::Tweet do
+    initialize_with { new(
+      id: 123456789012345679,
+      full_text: "There is a lady who's sure.",
+      created_at: 31.days.ago.to_s
+    ) }
+    after(:build) do |tweet|
+      tweet.stub(:user).and_return FactoryGirl.build(:tweet_user)
+      tweet.stub(:urls).and_return [FactoryGirl.build(:twitter_entity_url1),
+                                    FactoryGirl.build(:twitter_entity_url2)]
+    end
+  end
+
   factory :tweet_user, class: Twitter::User do
     initialize_with { new(
     id: 9885102,
