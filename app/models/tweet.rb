@@ -11,6 +11,7 @@ class Tweet
   index({ tweet_id: 1 }, { unique: true, name: "tweet_id_index" })
 
   has_and_belongs_to_many :links, dependent: :delete
+  has_many :tweet_urls, dependent: :delete
 
   around_destroy :decrement_link_counters
 
@@ -23,6 +24,8 @@ class Tweet
       link.update_tweet_count
       # Creates a new record since the clone is a new unsaved object!
       link.save!
+
+      #tweet_url = TweetUrl.find_by_link(link)
     }
   end
 

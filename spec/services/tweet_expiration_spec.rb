@@ -34,5 +34,9 @@ describe CleanupExpiredTweets do
       @cleaner.run_cleanup
       expect(Link.first.tweet_count).to eq(0)
     end
+
+    it 'deletes the associated TweetUrl' do
+      expect { @cleaner.run_cleanup }.to change{TweetUrl.count}.by(-2)
+    end
   end
 end
