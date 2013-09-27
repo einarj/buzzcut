@@ -22,10 +22,7 @@ class Tweet
     link_ids.each { |link_id|
       link = Link.find(link_id)
       link.update_tweet_count
-      # Creates a new record since the clone is a new unsaved object!
       link.save!
-
-      #tweet_url = TweetUrl.find_by_link(link)
     }
   end
 
