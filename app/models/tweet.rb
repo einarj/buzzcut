@@ -1,6 +1,6 @@
 class Tweet
   include Mongoid::Document
-  field :published_on, :type => Date
+  field :published_on, :type => DateTime
   field :user, :type => Hash
   field :full_text, :type => String
   field :urls, :type => Array

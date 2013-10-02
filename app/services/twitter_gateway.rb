@@ -5,20 +5,17 @@ class TwitterGateway
     @oauth_token_secret = oauth_token_secret
   end
 
-  def home_timeline
-    oldest = Tweet.asc(:published_on).first
-    if oldest && oldest.published_on >= 30.days.ago.to_date
-      # This should only be required during an initialization period
-      p "FETCHING OLDER THAN #{Tweet.min(:tweet_id)}"
-      client.home_timeline(:count => 200, :max_id => Tweet.min(:tweet_id))
-    elsif oldest.nil? # Initializing
+  def home_timeline(already_have_oldest=false)
+
+    max_id = Tweet.max(:tweet_id)
+    newest = Tweet.where(tweet_id: max_id).first
+
+    if newest.nil?
       client.home_timeline(:count => 200)
-    else
+    elsif newest.published_on <= 15.minutes.ago.to_date
       p "FETCHING NEWER THAN #{Tweet.max(:tweet_id)}"
-      client.home_timeline(:count => 200, :since_id => Tweet.max(:tweet_id))
+      client.home_timeline(:count => 200, :since_id => max_id)
     end
-
-
   end
 
   def client

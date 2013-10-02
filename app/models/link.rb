@@ -18,10 +18,4 @@ class Link
     self.tweet_count = self.tweets.count
   end
 
-  #def find_or_create_by_url(tweet_url)
-    #link = Link.find_or_create_by(url: tweet_url.expanded_url)
-    #tweet_url.link = link
-
-  #end
-
 end

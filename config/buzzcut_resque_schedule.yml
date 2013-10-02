@@ -1,0 +1,3 @@
+DeleteExpiredTweetsJob:
+  # Run every two minutes while debugging
+  cron: "0 0 */3 * *"

@@ -25,9 +25,11 @@ class FeedUpdater
           end
         end
       rescue Twitter::Error::TooManyRequests => error
+        p error
         if num_attempts <= MAX_ATTEMPTS
           # NOTE: Your process could go to sleep for up to 15 minutes but if you
           #     # retry any sooner, it will almost certainly fail with the same exception.
+          p "Sleeping..."
           sleep error.rate_limit.reset_in
           retry
         else

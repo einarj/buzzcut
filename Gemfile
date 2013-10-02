@@ -49,3 +49,7 @@ gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter.git
 
 gem 'crack'
 gem 'twitter'
+
+# Update tweets periodically in the background
+gem "resque"
+gem 'resque-scheduler', :require => 'resque_scheduler'
