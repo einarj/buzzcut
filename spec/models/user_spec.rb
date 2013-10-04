@@ -4,7 +4,7 @@ describe User do
   it { should validate_presence_of(:name) }
 
   it 'creates entry from auth hash' do
-    auth_hash = {'info' => {'name' =>  'Samuel Vimes'} }
+    auth_hash = {'info' => {'name' =>  'Samuel Vimes', 'email' => 'sam@citywatch.amp'} }
     expect {
       User.find_or_create_from_auth_hash(auth_hash)
     }.to change(User, :count).by(1)
